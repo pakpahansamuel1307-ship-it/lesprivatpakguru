@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #15140d40 transparent;
+}
+
+html,
+body {
+  height: 100%;
+  overscroll-behavior-y: none;
+}
+
+body.no-cursor,
+body.no-cursor * {
+  cursor: none !important;
+}
+
+::selection {
+  background-color: #ffed00;
+  color: #15140d;
+}
+
+/* ---------- Dark mode surface remap ---------- */
+html.dark body {
+  background-color: #15140d;
+  color: #fcf5eb;
+}
+
+/* ---------- Dot-grid decorative background ---------- */
+.bg-dot-grid {
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ---------- Deck / slide mechanics ---------- */
+.deck-slide {
+  min-height: 100dvh;
+  width: 100%;
+}
+
+/* Lenis smooth scroll helper classes */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---------- Custom cursor ---------- */
+.cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  mix-blend-mode: difference;
+}
+
+/* ---------- Utility: balanced text wrap ---------- */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* ---------- Hand-drawn underline draw-in ---------- */
+.draw-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  pathLength: 1;
+}
+
+/* ---------- Focus visibility ---------- */
+:focus-visible {
+  outline: 3px solid #ffed00;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Marquee track (contact section ticker) ---------- */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 24s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
